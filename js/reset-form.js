@@ -3,9 +3,6 @@ const counterForm = document.querySelector('.counter__form');
 const inputFields = counterForm.querySelectorAll('input');
 const resetButton = counterForm.querySelector('.form__reset-button');
 const calculateButton = counterForm.querySelector('.form__submit-button');
-
-
-// Получаем блок с информацией о калориях
 const counterResult = document.querySelector('.counter__result');
 
 // Функция для сброса полей и скрытия блока с информацией о калориях
