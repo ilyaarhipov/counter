@@ -1,4 +1,5 @@
-const RE = /^[0-9]$/; // Регулярное выражение для проверки формата хэштега
+const RE_AGE = /^(?:1(?:00?|\d)|[2-5]\d|[6-9]\d?)$/; // Регулярное выражение для проверки возраста
+const RE_HEIGHT_WEIGHT = /^\d{2,3}$/; // Регулярное выражение для проверки роста и веса
 
 const counterForm = document.querySelector('.counter__form');
 const age = counterForm.querySelector('#age');
@@ -15,17 +16,29 @@ const pristine = new Pristine(counterForm, {
   errorTextClass: 'input__error-text'
 });
 
-console.log('dsdsdsd');
-
 const validateAge = (value) => {
   if (value === '') {
     return true;
   }
-  if (!RE.test(value)) {
+  if (!RE_AGE.test(value)) {
     return false;
   }
-  return false;
+  return true;
 };
 
 pristine.addValidator(age, validateAge, 'Неверно указан возраст');
+
+const validateHeightAndWeight = (value) => {
+  if (value === '') {
+    return true;
+  }
+  if (!RE_HEIGHT_WEIGHT.test(value)) {
+    return false;
+  }
+  return true;
+};
+
+pristine.addValidator(height, validateHeightAndWeight, 'Неверно указан рост');
+
+pristine.addValidator(weight, validateHeightAndWeight, 'Неверно указан вес');
 
