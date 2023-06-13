@@ -1,1 +1,4 @@
-import './counter-result.js';
+import { handleInputAndSubmit } from './validate-form.js';
+import './reset-form.js';
+
+handleInputAndSubmit();

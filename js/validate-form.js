@@ -1,7 +1,12 @@
+import { updateCalculation } from './counter-result.js';
+import { updateResetButtonState } from './reset-form.js';
+
 const RE_AGE = /^(?:1(?:00?|\d)|[2-5]\d|[6-9]\d?)$/; // Регулярное выражение для проверки возраста
 const RE_HEIGHT_WEIGHT = /^\d{2,3}$/; // Регулярное выражение для проверки роста и веса
 
 const counterForm = document.querySelector('.counter__form');
+const inputFields = counterForm.querySelectorAll('input');
+const calculateButton = counterForm.querySelector('.form__submit-button');
 const age = counterForm.querySelector('#age');
 const height = counterForm.querySelector('#height');
 const weight = counterForm.querySelector('#weight');
@@ -42,4 +47,25 @@ pristine.addValidator(height, validateHeightAndWeight, 'Неверно указ�
 
 pristine.addValidator(weight, validateHeightAndWeight, 'Неверно указан вес');
 
-export {pristine};
+// Обработчик события ввода в полях ввода
+const handleInputAndSubmit = () => {
+  inputFields.forEach((input) => {
+    input.addEventListener('input', () => {
+      updateResetButtonState();
+      if (pristine.validate(inputFields)) {
+        calculateButton.removeAttribute('disabled');
+        // Обработчик события отправки формы
+        counterForm.addEventListener('submit', (evt) => {
+          evt.preventDefault();
+          if (pristine.validate(inputFields)) {
+            updateCalculation();
+          }
+        });
+      } else {
+        calculateButton.setAttribute('disabled', true);
+      }
+    });
+  });
+};
+
+export {handleInputAndSubmit};

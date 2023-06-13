@@ -463,7 +463,7 @@ input[type="number"] {
 }
 
 .input__error-text {
-  width: 120px;
+  width: 110px;
   margin: 0;
   padding: 0;
   margin-top: 10px;
