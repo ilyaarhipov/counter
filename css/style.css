@@ -401,6 +401,7 @@ input[type="number"] {
 
 .input__wrapper {
   display: flex;
+  flex-flow: column;
   width: 80px;
   margin: 0;
 }
@@ -459,6 +460,18 @@ input[type="number"] {
 .inputs-group .input:nth-child(2) {
   margin-left: 47px;
   margin-right: auto;
+}
+
+.input__error-text {
+  width: 120px;
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+
+  font-size: 12px;
+  line-height: 14px;
+
+  color:#fd3636;
 }
 
 .radio__wrapper {
