@@ -42,3 +42,4 @@ pristine.addValidator(height, validateHeightAndWeight, 'Неверно указ�
 
 pristine.addValidator(weight, validateHeightAndWeight, 'Неверно указан вес');
 
+export {pristine};

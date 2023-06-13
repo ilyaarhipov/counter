@@ -1,1 +1,1 @@
-import './validate-form.js';
+import './counter-result.js';
